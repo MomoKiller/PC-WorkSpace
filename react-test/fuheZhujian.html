@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>react-test</title>
+    </head>
+    <body>
+        <div id="main"></div>
+
+        <script src="./js/react.js"></script>
+        <script src="./js/react-dom.js"></script>
+        <script src="./js/babel.min.js"></script>
+
+        <script type="text/babel">
+            class App extends React.Component {
+                render() {
+                    // console.log(this);
+                    // let names = this.props.names;
+                    let {names} = this.props;
+                    return (
+                        <div>
+                            {
+                                names.map((item, index) => {
+                                    return <Welcom key={index} name={item}/>
+                                })
+                            }
+                        </div>
+                    )
+                }
+            }
+            
+            function Welcom(props){
+                return <h2>objctName {props.name}</h2>
+            }
+
+            let names = ['obj1', 'obj2', 'obj3', 'obj4'];
+
+            ReactDOM.render(<App names={names}/>, document.getElementById('main'));
+        </script>
+    </body>
+</html>
